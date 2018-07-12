@@ -25,10 +25,6 @@ public class Chatadpter extends RecyclerView.Adapter<Chatadpter.ViewHolder>  {
     public Chatadpter.customerlistadapterListner onClickListener;
 
 
-
-
-
-
     public Chatadpter(ArrayList<chatmodel> chatarray, customerlistadapterListner customerlistadapterListner) {
         this.chatarray=chatarray;
         this.onClickListener=customerlistadapterListner;
@@ -100,12 +96,6 @@ public class Chatadpter extends RecyclerView.Adapter<Chatadpter.ViewHolder>  {
 
             usertext = (TextView)view.findViewById(R.id.usertext);
             robottext = (TextView)view.findViewById(R.id.robottext);
-
-
-
-
-
-
 
 
         }

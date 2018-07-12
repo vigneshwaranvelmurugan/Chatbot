@@ -1,6 +1,7 @@
 package com.systimanx.chatbot;
 
 import android.content.Intent;
+import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.AsyncTask;
 import android.os.Build;
@@ -28,6 +29,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 
 import ai.api.AIListener;
@@ -53,7 +55,8 @@ public class MainActivity extends AppCompatActivity implements AIListener, Recog
     private SpeechRecognizer speech = null;
     private Intent recognizerIntent;
     int in=0;
-    String text = "";
+    final List<String> apknamearraylist = new ArrayList<String>();
+    final List<String> pakagenamearraylist = new ArrayList<String>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -163,6 +166,7 @@ public class MainActivity extends AppCompatActivity implements AIListener, Recog
             public void onClick(View view) {
 
 
+
                 if (editmessage.getText().toString().equals("")){
                     Toast.makeText(getApplicationContext(),"Enter Message",Toast.LENGTH_SHORT).show();
                 }
@@ -270,13 +274,47 @@ public class MainActivity extends AppCompatActivity implements AIListener, Recog
                         System.out.println("replay"+reply);
                           tts.speak(reply, TextToSpeech.QUEUE_ADD, null);//spech text
                         if (reply.equals("")){
-                            reply="Sorry, can you say that again?";
-                        }
 
+                            String sendapkname = "";
+                            if (usermesage.length()>5){
+                                 sendapkname=usermesage.substring(5);
+
+                            }
+                            List<PackageInfo> apps = getPackageManager().getInstalledPackages(0);
+
+                            for (int i = 0; i < apps.size(); i++) {
+                                PackageInfo p = apps.get(i);
+
+
+                                apknamearraylist.add(p.applicationInfo.loadLabel(getPackageManager()).toString().toLowerCase());//get all apk pakagename
+                                pakagenamearraylist.add(p.packageName);//get all apk name
+
+                                System.out.println("pakagenamess"+p.packageName);
+                                System.out.println("namescheck"+apknamearraylist);
+
+                            }
+                            String url=sendapkname;
+                            if (apknamearraylist.contains(url.toLowerCase())){
+                                int i=apknamearraylist.indexOf(url.toLowerCase());
+                                System.out.println("getpostion"+pakagenamearraylist.get(i));
+                                System.out.println("result"+apknamearraylist.indexOf(url.toLowerCase()));
+                                reply="Ok";
+                                Intent intent = getPackageManager().getLaunchIntentForPackage(pakagenamearraylist.get(i));//send intent in pakage name
+                                startActivity(intent);
+                            }
+                            else {
+                                reply="Sorry, can you say that again?";
+                            }
+
+
+
+
+                        }
 
 
                         final chatmodel chatmodel = new chatmodel(reply, "robot");
                         ref.child("chat").push().setValue(chatmodel);//store servermessge in firebase
+
 
                         firebasedataread();
 
@@ -289,6 +327,7 @@ public class MainActivity extends AppCompatActivity implements AIListener, Recog
 
 
     }
+
     public void firebasedataread(){
         chatarray.clear();
         final DatabaseReference database = FirebaseDatabase.getInstance().getReference();
