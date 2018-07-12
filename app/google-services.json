@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "480203100554",
+    "firebase_url": "https://fcmretrotwo.firebaseio.com",
+    "project_id": "fcmretrotwo",
+    "storage_bucket": "fcmretrotwo.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:480203100554:android:91df358c1ebbd172",
+        "android_client_info": {
+          "package_name": "com.systimanx.chatbot"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "480203100554-9n7jhcdgvcatrig9c3ng3o42ppeu3e08.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB4479pX-Vr_IwXAiswx_JDYikqx2_sObI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

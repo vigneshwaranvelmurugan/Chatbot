@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+ android:layout_width="match_parent"
+    android:paddingLeft="5dp"
+    android:paddingRight="5dp"
+    android:paddingTop="3dp"
+    android:paddingBottom="3dp"
+    android:orientation="vertical"
+    android:layout_height="wrap_content">
+
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:layout_gravity="center"
+       android:layout_marginTop="3dp"
+       android:layout_marginBottom="3dp"
+       android:gravity="right">
+           <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:textColor="#ffffff"
+               android:text="hello"
+               android:textSize="16dp"
+               android:paddingRight="10dp"
+               android:paddingBottom="5dp"
+               android:paddingLeft="10dp"
+               android:paddingTop="5dp"
+               android:clickable="true"
+               android:background="@drawable/user"
+               android:layout_alignParentRight="true"
+               android:id="@+id/usertext"
+               />
+   </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+
+            android:layout_marginTop="3dp"
+            android:layout_marginBottom="3dp"
+            android:gravity="left">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="16dp"
+                    android:text="hi"
+                    android:textColor="#000000"
+                    android:paddingRight="10dp"
+                    android:paddingBottom="5dp"
+                    android:paddingLeft="10dp"
+                    android:paddingTop="5dp"
+                    android:background="@drawable/clikable"
+
+                    android:layout_alignParentLeft="true"
+                    android:id="@+id/robottext"
+                    />
+        </LinearLayout>
+
+
+</LinearLayout>
